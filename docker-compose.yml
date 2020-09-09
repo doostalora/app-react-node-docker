@@ -1,0 +1,30 @@
+version: '3.5'
+
+services:
+  user: 
+    build:
+      context: ./services
+      dockerfile: services/Dockerfile
+    ports:
+      - 4100:3000
+    environment:
+      PORT: 3000
+      CORS_WHITELIST: '*'
+    networks:
+      sample_app_bhul_network:
+        aliases:
+          - user.local
+  webapp:
+    build:
+      context: ./client/sample-app
+      dockerfile: Dockerfile
+    ports:
+      - 4201:80  
+    networks:
+      - sample_app_bhul_network    
+
+networks:
+    sample_app_bhul_network:
+        driver: bridge      
+
+    
