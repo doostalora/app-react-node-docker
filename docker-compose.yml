@@ -21,10 +21,10 @@ services:
     ports:
       - 4201:80  
     networks:
-      - sample_app_bhul_network    
+      - sample_app_network    
 
 networks:
-    sample_app_bhul_network:
+    sample_app_network:
         driver: bridge      
 
     
